@@ -14,6 +14,13 @@ This repository contains the complete computational workflow and analysis source
 - `04_donor_lodo_shap_panel.py`: Nested feature selection (Top-K), SHAP interpretability, window classification (0-24h, 1-7d, >7d), and statistical evaluations.
 - `05_picrust2_functional_sankey.R`: PICRUSt2 functional transformation, pathway enrichment (ORA), topology analysis, and interactive Sankey diagram construction (networkD3).
 
+## Data Availability Statement
+
+Due to raw signal confidentiality and repository compliance, raw biological data are deposited in recognized global public repositories and are not directly hosted inside this code repository:
+
+- **16S rRNA Microbiome Sequencing Data**: NCBI Sequence Read Archive (SRA) BioProject [PRJNA1433698](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1433698).
+- **Untargeted Metabolomics Data**: EMBL-EBI MetaboLights database with accession [MTBLS14027](https://www.ebi.ac.uk/metabolights/MTBLS14027). Reviewer secure access token link: `https://www.ebi.ac.uk/metabolights/reviewer62fbf6e8-516a-4f9b-80c7-ef9d38ce527d`.
+
 ## Environment & Dependencies
 
 ### Python (v3.10+)
