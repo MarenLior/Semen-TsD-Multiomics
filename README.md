@@ -8,11 +8,12 @@ This repository contains the complete computational workflow and analysis source
 
 ## Directory & Script Overview
 
-- `01_metabolome_feature_selection.py`: Two-step feature selection (RFA + SEIFE) and hyperparameter tuning (BayesSearchCV) for single-omics models.
-- `02_multiomics_integration.py`: Comparative pipeline for Early, Latent (PLS), and Late (Stacking) multi-omics integration models under LODO-CV.
-- `03_environmental_correction_LMM.R`: Env-LOO cross-validation, PCA projections, Linear Mixed-Effects Models (lme4/lmerTest), and 2D Bias Landscape interpolation (akima).
-- `04_donor_lodo_shap_panel.py`: Nested feature selection (Top-K), SHAP interpretability, window classification (0-24h, 1-7d, >7d), and statistical evaluations.
-- `05_picrust2_functional_sankey.R`: PICRUSt2 functional transformation, pathway enrichment (ORA), topology analysis, and interactive Sankey diagram construction (networkD3).
+- `01_metabolome_feature_selection.py`: Two-step feature selection (Recursive Feature Addition / RFA + SEIFE algorithm) for identifying key metabolomic markers.
+- `02_metabolome_model_training.py`: Single-omics machine learning model training, Bayesian hyperparameter optimization (BayesSearchCV), and performance evaluation.
+- `03_multiomics_integration.py`: Comparative evaluation of Early, Latent (PLS), and Late (Stacking) multi-omics integration models using Leave-One-Donor-Out (LODO) cross-validation.
+- `04_environment_correction_lmm.R`: Env-LOO cross-validation, PCA projections, Linear Mixed-Effects Models (lme4/lmerTest), and 2D Bias Landscape interpolation (akima).
+- `05_donor_lodo_markers_shap_roc1.py`: Part 1 of Donor-LODO analysis — leakage-free preprocessing, RF regression, environment-stratified diagnostics, post-regression time-window classification (0–24h, 1–7d, >7d), direct multi-class ROC analysis, and scenario sensitivity testing.
+- `05_donor_lodo_markers_shap_roc2.R`: Part 2 of Donor-LODO analysis — binary marker contribution analysis (Mann–Whitney U test with over/underrepresented directionality), SHAP summary interpretability, and nested Top-K panel evaluation.
 
 ## Data Availability Statement
 
@@ -20,18 +21,3 @@ Due to raw signal confidentiality and repository compliance, raw biological data
 
 - **16S rRNA Microbiome Sequencing Data**: NCBI Sequence Read Archive (SRA) BioProject [PRJNA1433698](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1433698).
 - **Untargeted Metabolomics Data**: EMBL-EBI MetaboLights database with accession [MTBLS14027](https://www.ebi.ac.uk/metabolights/MTBLS14027). 
-
-## Environment & Dependencies
-
-### Python (v3.10+)
-- `scikit-learn` == 1.5.2
-- `scikit-optimize` == 0.10.2
-- `statsmodels` == 0.14.5
-- `xgboost`, `lightgbm`, `catboost`, `shap`
-
-### R (v4.2+)
-- `lme4`, `lmerTest`, `akima` (v0.6.3.6)
-- `networkD3` (v0.4.1), `htmlwidgets` (v1.6.4), `ggplot2`
-
-## Reproducibility Notice
-All stochastic machine learning iterations and data split folds are initialized with a fixed random seed (`random_state = 42`).
